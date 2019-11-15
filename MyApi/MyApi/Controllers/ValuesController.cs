@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyApi.Data;
 using MyApi.Models;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyApi.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -25,6 +27,7 @@ namespace MyApi.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Value>> GetValues(int id)
         {
             return await _context.Values.FirstOrDefaultAsync(x=>x.Id == id);
