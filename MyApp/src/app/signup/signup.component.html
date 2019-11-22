@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-title>Signup</mat-card-title>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="service.signUpForm" (submit)="onSignUp()" autocomplete="off">
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput placeholder="Username" formControlName="username" required>
+          <mat-error>Please input username</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput placeholder="Password" formControlName="password" type="password" required>
+          <mat-error>Please input password</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-content>
+          <mat-form-field>
+            <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
+            <mat-error>Please input confirm password</mat-error>
+            <!-- <mat-error *ngIf="this.service.signUpForm.value.confirmPassword.hasError('duplicate')">this is test</mat-error> -->
+          </mat-form-field>
+        </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions>
+        <mat-card-content>
+          <button mat-raised-button [disabled]="!service.signUpForm.valid">Signup</button>
+        </mat-card-content>
+      </mat-card-actions>
+    </form>
+</mat-card>

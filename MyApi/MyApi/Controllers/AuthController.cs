@@ -78,7 +78,9 @@ namespace MyApi.Controllers
 
             return Ok(new
             {
-                token = tokenHandler.WriteToken(token)
+                token = tokenHandler.WriteToken(token),
+                statusCode = StatusCode(200),
+                username = user.Username
             });
         }
     }
