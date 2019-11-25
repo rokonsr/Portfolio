@@ -17,12 +17,4 @@ export class SignupComponent implements OnInit {
     console.log(this.service.signUpForm.value);
   }
 
-  passwordCompaired() {
-    const password = this.service.signUpForm.value.password;
-    const confirmPassword = this.service.signUpForm.value.confirmPassword;
-
-    if (password !== confirmPassword) {
-      this.service.signUpForm.value.confirmPassword.get('confirmPassword').setErrors({ NoPassswordMatch: true });
-    }
-  }
 }

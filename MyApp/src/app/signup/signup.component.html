@@ -17,9 +17,9 @@
       </mat-card-content>
       <mat-card-content>
           <mat-form-field>
-            <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
-            <mat-error>Please input confirm password</mat-error>
-            <!-- <mat-error *ngIf="this.service.signUpForm.value.confirmPassword.hasError('duplicate')">this is test</mat-error> -->
+            <input matInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" [errorStateMatcher]="service.matcher" required>
+            <mat-error *ngIf="service.signUpForm.value.confirmPassword === ''">Please input confirm password</mat-error>
+            <mat-error *ngIf="service.signUpForm.hasError('notSame') && service.signUpForm.value.confirmPassword !== ''">Confirm Password Not Same</mat-error>
           </mat-form-field>
         </mat-card-content>
       <mat-divider></mat-divider>
