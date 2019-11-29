@@ -17,9 +17,10 @@ export class LoginComponent implements OnInit {
   onLogin() {
     if (this.service.loginForm.valid) {
       this.service.login().subscribe(result => {
+        this.service.loginForm.reset();
         this.route.navigateByUrl('home');
       }, error => {
-        console.log('Login failed');
+        console.log('Login Failed');
       });
     }
   }

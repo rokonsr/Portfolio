@@ -1,18 +1,25 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { ValuesComponent } from './values/values.component';
+import { AuthGuard } from './_shared/guards/auth.guard';
 
 
 const routes: Routes = [
-  { path : 'home', component : HomeComponent },
+  { path : '', component : HomeComponent },
   { path : 'login', component : LoginComponent },
   { path : 'signup', component : SignupComponent },
-  { path : 'value', component : ValuesComponent },
-  { path : '**', component : AppComponent }
+  {
+    path : '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthGuard],
+    children: [
+      { path : 'value', component : ValuesComponent, canActivate: [AuthGuard] }
+    ]
+  },
+  { path : '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

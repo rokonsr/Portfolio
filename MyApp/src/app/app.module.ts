@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { ValuesComponent } from './values/values.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,7 +31,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
       BrowserAnimationsModule,
       MaterialModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      BsDropdownModule.forRoot()
    ],
    providers: [AuthService],
    bootstrap: [
